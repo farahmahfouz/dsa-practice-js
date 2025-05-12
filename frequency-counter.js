@@ -86,8 +86,103 @@ function isAnagram(first, second) {
 //   );
 // }
 
-console.log(isAnagram("listen", "silent"));
-console.log(isAnagram("listen", "Silent"));
-console.log(isAnagram("apple"));
-console.log(isAnagram(null, "abc"));
-console.log(isAnagram("", ""));
+// console.log(isAnagram("listen", "silent"));
+// console.log(isAnagram("listen", "Silent"));
+// console.log(isAnagram("apple"));
+// console.log(isAnagram(null, "abc"));
+// console.log(isAnagram("", ""));
+
+//====================================//
+
+// Frequency Counter - sameFrequency
+// Write a function called sameFrequency. Given two positive integers, find out if the two numbers have the same frequency of digits.
+
+// Your solution MUST have the following complexities:
+
+// Time: O(N)
+
+function sameFrequency(num1, num2) {
+  const str1 = String(num1);
+  const str2 = String(num2);
+  if (str1.length !== str2.length) return false;
+  let result = {};
+  for (let i = 0; i < str1.length; i++) {
+    let letter = str1[i];
+    result[letter] = (result[letter] || 0) + 1;
+  }
+  for (let i = 0; i < str2.length; i++) {
+    let letter = str2[i];
+    if (!result[letter]) return false;
+    result[letter] -= 1;
+  }
+  return true;
+}
+
+// Sample Input:
+
+// console.log(sameFrequency(182, 281)); // true
+// console.log(sameFrequency(34, 14)); // false
+// console.log(sameFrequency(3589578, 5879385)); // true
+// console.log(sameFrequency(22, 222)); // false
+
+//====================================//
+
+// Frequency Counter / Multiple Pointers - areThereDuplicates
+// Implement a function called, areThereDuplicates which accepts a variable number of arguments,
+//  and checks whether there are any duplicates among the arguments passed in.
+//  You can solve this using the frequency counter pattern OR the multiple pointers pattern.
+
+// Time - O(n)
+
+// Space - O(n)
+// Examples:
+// function areThereDuplicates(...args) {
+//   let result = {};
+//   for (let i = 0; i < args.length; i++) {
+//     let letter = args[i];
+//     result[letter] = (result[letter] || 0) + 1;
+//   }
+//   for (let key in result) {
+//     if (result[key] > 1) return true;
+//   }
+//   return false;
+// }
+
+function areThereDuplicates(...args) {
+  let result = {};
+  for (let i = 0; i < args.length; i++) {
+    let letter = args[i];
+    if (result[letter]) return true;
+    result[letter] = 1;
+  }
+
+  return false;
+}
+
+// console.log(areThereDuplicates(1, 2, 3)); // false
+// console.log(areThereDuplicates(1, 2, 2)); // true
+// console.log(areThereDuplicates("a", "b", "c", "a")); // true
+
+// Frequency Counter - findAllDuplicates
+// Given an array of positive integers, some elements appear twice and others appear once.
+// Find all the elements that appear twice in this array. Note that you can return the elements in any order.
+
+console.log(findAllDuplicates([4, 3, 2, 7, 8, 2, 3, 1])); // array with 2 and 3
+console.log(findAllDuplicates([4, 3, 2, 1, 0])); // []
+console.log(findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3])); // array with 3, 2, and 1
+// Time Complexity - O(n)
+
+function findAllDuplicates(arr) {
+  let result = {};
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    result[num] = (result[num] || 0) + 1;
+  }
+  let duplicates = [];
+  for (let key in result) {
+    if (result[key] === 2) {
+      duplicates.push(+key);
+    }
+  }
+  return duplicates;
+}
