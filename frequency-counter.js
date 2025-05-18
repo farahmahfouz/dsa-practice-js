@@ -163,13 +163,16 @@ function areThereDuplicates(...args) {
 // console.log(areThereDuplicates(1, 2, 2)); // true
 // console.log(areThereDuplicates("a", "b", "c", "a")); // true
 
+//====================================//
+
 // Frequency Counter - findAllDuplicates
 // Given an array of positive integers, some elements appear twice and others appear once.
 // Find all the elements that appear twice in this array. Note that you can return the elements in any order.
 
-console.log(findAllDuplicates([4, 3, 2, 7, 8, 2, 3, 1])); // array with 2 and 3
-console.log(findAllDuplicates([4, 3, 2, 1, 0])); // []
-console.log(findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3])); // array with 3, 2, and 1
+// console.log(findAllDuplicates([4, 3, 2, 7, 8, 2, 3, 1])); // array with 2 and 3
+// console.log(findAllDuplicates([4, 3, 2, 1, 0])); // []
+// console.log(findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3])); // array with 3, 2, and 1
+
 // Time Complexity - O(n)
 
 function findAllDuplicates(arr) {
@@ -186,3 +189,47 @@ function findAllDuplicates(arr) {
   }
   return duplicates;
 }
+
+//====================================//
+
+// Frequency Counter - constructNote
+// Write a function called constructNote, which accepts two strings, a message and some letters.
+// The function should return true if the message can be built with the letters that you are given, or it should return false.
+
+// Assume that there are only lowercase letters and no space or special characters in both the message and the letters.
+
+// Time Complexity - O(n)
+
+function cleanInput(str) {
+  return str.toLowerCase().replace(/[^a-z]/g, "");
+}
+
+function constructNote(message, letters) {
+  message = cleanInput(message);
+  letters = cleanInput(letters);
+
+  if (message.length === 0) return true;
+
+  let messageFreq = {};
+  let letterFreq = {};
+  for (let i = 0; i < message.length; i++) {
+    let letter = message[i];
+    messageFreq[letter] = (messageFreq[letter] || 0) + 1;
+  }
+  for (let i = 0; i < letters.length; i++) {
+    let letter = letters[i];
+    letterFreq[letter] = (letterFreq[letter] || 0) + 1;
+  }
+
+  for (let key in messageFreq) {
+    if (!letterFreq[key] || letterFreq[key] < messageFreq[key]) return false;
+  }
+  return true;
+}
+
+// console.log(constructNote("aa", "abc")); // false
+// console.log(constructNote("abc", "dcba")); // true
+// console.log(constructNote("aabbcc", "bcabcaddff")); // true
+
+//====================================//
+
