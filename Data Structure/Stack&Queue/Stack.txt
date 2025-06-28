@@ -1,0 +1,18 @@
+Pushing Pseudocode
+
+1- The function should accept the value.
+2- Create a new node with that value.
+3- If there is no nodes in the stack, set the first and the last property to be the newly created node.
+4- If there is at least one node, create a variable that store the current first property on the stack.
+5- Reset the first property tp be the newly created node.
+6- Set the next property on the node to be the previously created variable.
+7- Increment the size of the stack by 1.
+
+Pop Pseudocode
+
+1- If there is no node is the stack return null.
+2- Create a temporay variable to store the first property on the stack.
+3- If there is only one node, set the first and last property to be null.
+4- If there is more than one node, set the first property to the next property on the current first.
+5- Decrement the size by 1.
+6 - Returned the value of the node removed.

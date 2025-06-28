@@ -1,0 +1,94 @@
+Push puesodoCode
+
+1- Create a new node with the value passed to the function.
+2- If the head property is null set the head and tail to be newly created node.
+3- If not, set the next property on the tail to be that node.
+4- Set the previous property on the newly created node to be the tail.
+5- Set the tail to be the newly created node 
+
+Pop puesodoCode
+
+1- If there is no head return undefined.
+2- Store the current tail in a variable to return later.
+3- If the length is 1, set the head and tail to be null.
+4- Update the tail to be the previous node.
+5- Set the newTail's next to null.
+6- Decrement the length.
+7- Return the value removed.
+
+
+
+Shift puesodoCode
+
+1. If length is 0 return undefined.
+2. Store the current head in a variable to return later (oldHead = this.head).
+3. If the length is 1, set both head and tail to null.
+4. Otherwise, update the head to be the previous node (this.head = oldHead.next).
+5. Set the new head’s prev to null.
+6. Set oldHead.next = null to fully detach the old tail.
+7. Decrement the length (this.length--).
+8. Return the removed node (return oldHead).
+
+
+unShift puesodoCode
+
+1- Create a new node with the value passed to the function.
+2- If the length is 0, Set the head and tail to be the new node.
+3- Otherwise, set the prev property on the head of the list to be the new node, 
+Set the next property on the new node to be the head property, Update the head to be the new node.
+
+4- Increment the length.
+5- Return the list.
+
+
+Get puesodoCode
+
+1- If the index is less than 0 or greater than the length, return null;
+2- If the index is less than or equal to half the length of the list;
+--- Loop through the list starting from the head and loop towards the middle
+--- Return the node once it found
+3- If the index greater than half the length of the list
+--- Loop through the list starting from the tail and loop towards the middle.
+--- Return the node once it found.
+
+
+Set puesodoCode
+1- Create a variable which is the result of the get method at the index passed to the function.
+--- If the get method returns a valid node, set te value of that node to be the value passed to the function.
+--- Return true
+2- Otherwise, return false.
+
+Insert puesodoCode 
+
+1- If the index is less than 0 or greater than or equal to the length, return false.
+2- If the length is 0, unShift.
+3- If the length is the same as the length, push.
+4- Use the get method to acces the index -1.
+5- Set the next and prev properties on the correct nodes to link everything together.
+
+
+<Remove pseudoCode>
+
+1- If the index is less than 0 or greater than or equal to the length, return undefined.
+
+2- If index is 0 shift.
+
+3- If index is length - 1 pop.
+
+4- Use get(index) to find the node to be removed
+
+5- Store references to:
+   --- previousNode = node.prev
+   --- nextNode = node.next
+
+6- Reconnect the list by:
+   --- previousNode.next = nextNode
+   --- nextNode.prev = previousNode
+
+7- Clean up the removed node:
+   --- node.prev = null
+   --- node.next = null
+
+8- Decrement the length
+
+9- Return the removed node
